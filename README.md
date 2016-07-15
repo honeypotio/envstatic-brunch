@@ -1,5 +1,6 @@
 envstatic-brunch
 =============
+[![Build Status](https://travis-ci.org/honeypotio/envstatic-brunch.svg)][travis]
 
 A [Brunch][] plugin that replaces tokens with predefined variables.
 
@@ -82,5 +83,5 @@ Honeypot is a developer focused job platform.
 The names and logos for Honeypot are trademarks of Honeypot GmbH.
 
 [Brunch]: http://brunch.io
-[travis]: https://travis-ci.org/honeypotio/plug_utm
+[travis]: https://travis-ci.org/honeypotio/envstatic-brunch
 [honeypotio]: https://www.honeypot.io?utm_source=github
