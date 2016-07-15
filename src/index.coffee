@@ -15,8 +15,7 @@ class Envstatic
       # RegExp that matches files that contain filename references.
       referenceFiles: /\.js$/
       # variables to be substitued
-      variables:
-        APP_HOST: 'app.example.com'
+      variables: {}
     }
 
     # Merge config
