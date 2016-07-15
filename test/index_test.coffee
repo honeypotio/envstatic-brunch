@@ -41,12 +41,19 @@ describe 'Envstatic', ->
   describe 'on compile', ->
     beforeEach ->
       setupFakeFileSystem()
-      envstatic.onCompile()
 
     it 'removes matched patterns', ->
+      envstatic.onCompile()
       contents = readFile('app.js')
       expect(contents).to.not.contain('ENVSTATIC_APP_HOST')
 
     it 'replaces with variable from options', ->
+      envstatic.onCompile()
       contents = readFile('app.js')
       expect(contents).to.contain('app.example.com')
+
+    it 'replaces with "undefined" when var not present', ->
+      envstatic.options.variables = {}
+      envstatic.onCompile()
+      contents = readFile('app.js')
+      expect(contents).to.contain('undefined')
