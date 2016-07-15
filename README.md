@@ -56,8 +56,7 @@ exports.config =
       ## RegExp that matches files that contain filename references.
       referenceFiles: /\.js$/
       ## variables to be substitued
-      #variables:
-      #  APP_HOST: 'app.example.com'
+      variables: {}
 ```
 
 Contributing
@@ -71,6 +70,17 @@ Contributing
 License
 -------
 
-MIT
+Copyright © 2016 [Honeypot GmbH][honeypotio]. It is free software, and may be
+redistributed under the terms specified in the [LICENSE](/LICENSE) file.
+
+About Honeypot
+--------------
+
+[![Honeypot](https://www.honeypot.io/logo.png)][honeypotio]
+
+Honeypot is a developer focused job platform.
+The names and logos for Honeypot are trademarks of Honeypot GmbH.
 
 [Brunch]: http://brunch.io
+[travis]: https://travis-ci.org/honeypotio/plug_utm
+[honeypotio]: https://www.honeypot.io?utm_source=github
