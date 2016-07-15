@@ -1,1 +1,9 @@
 language: node_js
+deploy:
+  provider: npm
+  email: admin@honeypot.io
+  api_key:
+    secure: EzTDmOjM7CIm8HhR+uq1yaruxMHQRVjWrsZX7eRmpGCDcwbDIqLVyIYi+p1kr2I3tNhwW7bHJ28mGxwiXV9FyvbEtyadMOnefRrqdCW+9xwwYhjfMvv6GSyVivc/KpW5+GbQCWguv0XDwkwNCcSOBZYZrWoq8hyzTFzzLXVlFoFqhxeOlLcOaQ/rdBctJxnUi7izZtGPMuc2JbMbKiS2gTUNT4nUa/YC9A2ZS25eUNsszSmA+Hf0cO/gcJe6QJthG0LCpFfPnXWnsPWr+OE1x/NIMsbKRLjb8CeBzO5N6h/PK+4yuyQdJHrf06nSUMoeeJhDAu+x9y37T0rBmL5Bb3Duikf8nOHCtSL9ANb1s0n7joD6gorAxeN6JrSVqH/epGh/1BKnxFLfUx+vHlo1JlB1eLuEmyn5egHyyN7Kc+4FCuei5vRjQSyK5E8uGpWkDRQCt297Sv98mO2/xou/TIjCp38xPzAX//YZrMLje3fvaJM0IZRmzEKERO7Tc8Yi6plqRgKNgnIcQg1MjAXr8AUw6raBK6EKYTof/GqMkH+xF37/Z2ymR4IzTmyoPk/JcyUZjnsg1wbhJInvoc4N1pwmawqaOQd9oyY/TDL5jGk3fAd1dnkO155Pf7WRpllews6qUtaKpRK+jdiggKMxuY8aFrxXwOyX4+IR5YDnV4c=
+  on:
+    tags: true
+    repo: honeypotio/envstatic-brunch
