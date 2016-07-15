@@ -1,5 +1,5 @@
 {
-  "name": "env-static-brunch",
+  "name": "envstatic-brunch",
   "version": "0.1.0",
   "description": "A Brunch plugin that replaces tokens with predefined variables.",
   "main": "./src/index",
@@ -7,10 +7,10 @@
     "test": "node_modules/.bin/mocha --compilers coffee:coffee-script/register"
   },
   "author": "Hugo Duksis",
-  "homepage": "https://github.com/honeypotio/env-static-brunch",
+  "homepage": "https://github.com/honeypotio/envstatic-brunch",
   "repository": {
     "type": "git",
-    "url": "git@github.com:honeypotio/env-static-brunch.git"
+    "url": "git@github.com:honeypotio/envstatic-brunch.git"
   },
   "dependencies": {
     "fs-extra": "~0.30.0",

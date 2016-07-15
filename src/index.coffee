@@ -1,17 +1,28 @@
-warn = (message) -> EnvStatic.logger.warn "env-static-brunch WARNING: #{message}"
+pathlib = require 'path'
+glob = require 'glob'
+fs = require 'fs'
 
-class EnvStatic
+warn = (message) -> Envstatic.logger.warn "envstatic-brunch WARNING: #{message}"
+
+class Envstatic
   brunchPlugin: true
 
   constructor: (@config) ->
     # Defaults options
     @options = {
+      # Placeholder prefix to be concatinated with variable names
+      prefix: '$ENVSTATIC_'
       # A RegExp where the first subgroup matches the token to be replaced
-      pattern: /\$ENV_STATIC(\w+)/gi
+      pattern: /\$ENVSTATIC_(\w+)/gi
+      # RegExp that matches files that contain filename references.
+      referenceFiles: /\.js$/
+      # variables to be substitued
+      variables:
+        APP_HOST: 'app.example.com'
     }
 
     # Merge config
-    cfg = @config.plugins?.digest ? {}
+    cfg = @config.plugins?.envstatic ? {}
     @options[k] = cfg[k] for k of cfg
 
     # Ensure that the pattern RegExp is global
@@ -24,7 +35,36 @@ class EnvStatic
   onCompile: ->
     @publicFolder = @config.paths.public
     warn 'Oh... something is happening'
+    filesToSearch = @_referenceFiles()
+    for file in filesToSearch
+      @_replaceFile(file)
 
-EnvStatic.logger = console
+  _replaceFile: (file) ->
+    data = fs.readFileSync file, "utf8"
+    result = data.replace @options.pattern, (match) =>
+      match = match.replace @options.prefix, ''
+      if match and @options.variables[match]
+        # Quote it to be safe otherwise
+        replacement = "'" + @options.variables[match] + "'"
+      else
+        replacement = 'undefined'
+      replacement
 
-module.exports = EnvStatic
+    fs.writeFileSync file, result
+
+  _referenceFiles: ->
+    allUrls = glob.sync('**', { cwd: @publicFolder })
+    referenceFiles = []
+    for url in allUrls
+      file = @_fileFromUrl url
+      referenceFiles.push file if @options.referenceFiles.test(file)
+    referenceFiles
+
+  _fileFromUrl: (url) ->
+    dir = @publicFolder
+    file = pathlib.join(dir, url)
+    pathlib.normalize(file)
+
+Envstatic.logger = console
+
+module.exports = Envstatic
