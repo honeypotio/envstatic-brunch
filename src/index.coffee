@@ -2,8 +2,6 @@ pathlib = require 'path'
 glob = require 'glob'
 fs = require 'fs'
 
-warn = (message) -> Envstatic.logger.warn "envstatic-brunch WARNING: #{message}"
-
 class Envstatic
   brunchPlugin: true
 
@@ -34,7 +32,6 @@ class Envstatic
 
   onCompile: ->
     @publicFolder = @config.paths.public
-    warn 'Oh... something is happening'
     filesToSearch = @_referenceFiles()
     for file in filesToSearch
       @_replaceFile(file)
@@ -44,7 +41,6 @@ class Envstatic
     result = data.replace @options.pattern, (match) =>
       match = match.replace @options.prefix, ''
       if match and @options.variables[match]
-        # Quote it to be safe otherwise
         replacement = "'" + @options.variables[match] + "'"
       else
         replacement = 'undefined'
