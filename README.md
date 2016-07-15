@@ -29,7 +29,7 @@ exports.config =
         APP_HOST: process.env.APP_HOST
 ```
 
-will replace the envstatic placeholedr with value configured in
+will replace the envstatic placeholder with value configured in
 your brunch-config file.
 
 ```javascript
